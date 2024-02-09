@@ -15,10 +15,12 @@ class ResumeExportExcel(models.AbstractModel):
         
         for record in records:
             # Profile Section
-            picture = io.BytesIO(base64.b64decode(record.picture))
+            if record.picture:
+                picture = io.BytesIO(base64.b64decode(record.picture))
+                worksheet.insert_image('B1', "image.png", {'x_offset': 125, 'y_offset': 10, 'x_scale': 1, 'y_scale': 0.5, 'image_data': picture})
+                
             worksheet.write('A1', record.name, header_format)
             worksheet.write('A2', record.job_position, text_center_format)
-            worksheet.insert_image('B1', "image.png", {'x_offset': 125, 'y_offset': 10, 'x_scale': 1, 'y_scale': 0.5, 'image_data': picture})
             worksheet.write('A4', 'Profile', header_format)
             worksheet.write('A5', record.summary, body_format)
 
