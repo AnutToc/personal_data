@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_personal_data_pdf">
+        <t t-set="full_width" t-value="True"/>
+        <t t-call="web.basic_layout">
+        <t t-foreach="docs" t-as="o">
+            <div class="o_personal_data_resume page">
+                <t t-call="personal_data.report_personal_data_main_panel"/>
+                <p class="o_new_page"/>
+            </div>
+        </t>
+        </t>
+    </template>
+
+    <template id="report_personal_data_main_panel">
+        <div class="oe_structure">
+            <section class="profile section-padding">
+                <div class="o_sidebar" t-attf-style="background: #{color_primary}; background-color: #{color_primary};">
+                    <div class="o_profile">
+                        <img class="img img-fluid rounded-circle o_profile_image" t-att-src="image_data_uri(o.picture)" alt="Resume" style="float: right;"/>
+                        <h1 class="o_profile_name mt-2" t-field="o.name"></h1>
+                        <h3 class="o_profile_job mb-2" t-field="o.job_position"></h3>
+                        <h4>Profile</h4>
+                        <span t-field="o.summary"/>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h4>Experience</h4>
+                <div class="oe_structure"></div>
+                <t t-foreach="o.experience_ids" t-as="experience">
+                    <div class="o_main_panel">
+                        <div class="o_main_panel_section">
+                            <div><span t-field="experience.company_name"/></div>
+                            <div><span t-field="experience.job_title"/></div>
+                            <div>
+                                <span t-field="experience.start_date" format="MMM YYYY"/> -
+                                <span t-field="experience.end_date" t-if="experience.end_date" format="MMM YYYY"/>
+                            </div>
+                        </div>
+                        <div>
+                            <p><span t-field="experience.responsibilities"/></p>
+                        </div>
+                    </div>
+                </t>
+            </section>
+
+            <section style="display: inline-block;">
+                <div class="o_main_panel">
+                    <h4>Skill</h4>
+                    <t t-foreach="o.skill_ids" t-as="skill">
+                        <ul>
+                            <li><span t-field="skill.skill"/></li>
+                        </ul>
+                    </t>
+                </div>
+            </section>
+
+            <section style="display: inline-block; float: right;">
+                <div class="o_main_panel">
+                    <h4>Languages</h4>
+                    <ul>
+                        <t t-foreach="o.language.splitlines()" t-as="language">
+                            <li><span t-esc="language"/></li>
+                        </t>
+                    </ul>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li class="email">
+                            <i class="fa fa-solid fa-envelope pe-2"/>
+                            <a t-field="o.email"></a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="phone">
+                            <i class="fa fa-solid fa-phone pe-2"/>
+                            <a t-field="o.phone"></a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="website" t-if="o.website">
+                            <i class="fa fa-solid fa-globe pe-2"/>
+                            <a t-field="o.website"></a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="o_main_panel">
+                    <h4>Awards and Certifications</h4>
+                    <t t-foreach="o.award_ids" t-as="award">
+                        <ul>
+                            <li>
+                                <span t-field="award.institution"/>
+                                <span t-field="award.title"/>
+                            </li>
+                        </ul>
+                    </t>
+                </div>
+            </section>
+
+            <section>
+                <div class="o_main_panel">
+                    <h4>Education</h4>
+                    <t t-foreach="o.education_ids" t-as="education">
+                        <span t-field="education.institution" style="margin-right: 10px;"/>
+                        <span t-field="education.degree"/>
+                        <span t-field="education.major"/>
+                    </t>
+                </div>
+            </section>
+        </div>
+    </template>
+</odoo>

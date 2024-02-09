@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_personal_data_pdf" model="ir.actions.report">
+            <field name="name">Resume PDF</field>
+            <field name="model">personal.data</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="paperformat_id" ref="personal_data.paperformat_resume"/>
+            <field name="report_name">personal_data.report_personal_data_pdf</field>
+            <field name="report_file">personal_data.report_personal_data_pdf</field>
+            <field name="binding_model_id" ref="model_personal_data"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_personal_data_xls" model="ir.actions.report">
+            <field name="name">Resume XLSX</field>
+            <field name="model">personal.data</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">personal_data.report_personal_data_xls</field>
+            <field name="report_file">personal_data.report_personal_data_xls</field>
+            <field name="binding_model_id" ref="model_personal_data"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

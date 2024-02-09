@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="personal_data_menu_root" name="Personal Data" action="personal_data_action"/>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_personal_data,access_personal_data,personal_data.model_personal_data,base.group_user,1,1,1,1
+access_personal_data_experience,access_personal_data_experience,personal_data.model_personal_data_experience,base.group_user,1,1,1,1
+access_personal_data_education,access_personal_data_education,personal_data.model_personal_data_education,base.group_user,1,1,1,1
+access_personal_data_certificate,access_personal_data_certificate,personal_data.model_personal_data_certificate,base.group_user,1,1,1,1
+access_personal_data_skill,access_personal_data_skill,personal_data.model_personal_data_skill,base.group_user,1,1,1,1
