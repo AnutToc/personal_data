@@ -17,7 +17,9 @@
             <section class="profile section-padding">
                 <div class="o_sidebar" t-attf-style="background: #{color_primary}; background-color: #{color_primary};">
                     <div class="o_profile">
-                        <img class="img img-fluid rounded-circle o_profile_image" t-att-src="image_data_uri(o.picture)" alt="Resume" style="float: right;"/>
+                        <t t-if="o.picture">
+                            <img class="img img-fluid rounded-circle o_profile_image" t-att-src="image_data_uri(o.picture)" alt="Resume" style="float: right;"/>
+                        </t>
                         <h1 class="o_profile_name mt-2" t-field="o.name"></h1>
                         <h3 class="o_profile_job mb-2" t-field="o.job_position"></h3>
                         <h4>Profile</h4>
