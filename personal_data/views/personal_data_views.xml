@@ -19,7 +19,6 @@
                         <field name="language"/>
                         <field name="email" required="1"/>
                         <field name="website"/>
-                        <field name="address" required="1"/>
                     </group>
                 </group>
                 <group>
